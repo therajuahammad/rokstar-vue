@@ -1,10 +1,10 @@
 <template>
-  <div :class="`flex items-center ${classes}`">
+  <div class="flex items-center">
     <h5 class="text-base mr-5 leading-none">Share:</h5>
     <ul class="flex space-x-4">
       <li v-for="icon in icons">
         <a :href="icon.link" target="_blank" rel="noopener">
-          <Fa :icon="['fa-brands', icon.iconName]" />
+          <Fa :icon="['fa-brands', icon.iconName]"/>
         </a>
       </li>
     </ul>
@@ -15,10 +15,6 @@
 export default {
   name: "SocialMedia",
   props: {
-    classes: {
-      type: String,
-      default: ""
-    },
     icons: {
       type: Array,
       default: []

@@ -5,6 +5,7 @@
     <About/>
     <Services/>
     <Portfolios/>
+    <Contact/>
   </div>
 </template>
 

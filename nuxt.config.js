@@ -41,15 +41,18 @@ export default {
         wght: [300, 400, 500, 600, 700],
         ital: [400]
       },
-      'Russo+One': true
+      'Russo+One': {
+        wght: [400]
+      }
     }
   },
   fontawesome: {
     component: 'Fa',
     suffix: false,
     icons: {
-      solid: true,
-      brands: true
+      solid: false,
+      brands: true,
+      regular: true
     }
   }
 }
