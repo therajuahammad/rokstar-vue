@@ -28,7 +28,7 @@
 
             <div v-html="about.bio"/>
 
-            <SocialMedia :icons="about.socialMedia" classes="mt-10"/>
+            <SocialMedia :icons="about.socialMedia" class="mt-10"/>
           </div>
         </div>
       </div>
