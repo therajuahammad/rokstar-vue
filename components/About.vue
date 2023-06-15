@@ -1,5 +1,5 @@
 <template>
-  <section class="pt-[80px] lg:pt-[100px] pb-[60px] lg:pb-[125px]">
+  <section class="pt-[80px] lg:pt-[100px] pb-[60px] lg:pb-[125px]" id="about">
     <div class="container">
       <SectionTitle
         title="About Me"

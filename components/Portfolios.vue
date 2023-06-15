@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-50 relative pt-[100px] pb-[100px] lg:pb-[200px]">
+  <section class="bg-gray-50 relative pt-[100px] pb-[100px] lg:pb-[200px]" id="portfolio">
     <div class="container">
       <SectionTitle title="Portfolios"/>
 

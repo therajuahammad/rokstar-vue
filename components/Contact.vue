@@ -1,5 +1,5 @@
 <template>
-  <section class="py-[100px]">
+  <section class="py-[100px]" id="contact">
     <div class="container">
       <SectionTitle
         title="Get In Touch"

@@ -3,8 +3,9 @@
     <ul class="nav flex space-x-10">
       <li v-for="navItem in navItems">
         <a
+          href="#"
           class="navitem"
-          :href="navItem.href"
+          @click.prevent="scrollTo(navItem.href)"
           :data-hover="navItem.name.toLowerCase()"
           :target="checkExternalLink(navItem.href) ? '_blank' :'_self'"
         >
@@ -16,7 +17,7 @@
 </template>
 
 <script>
-import navItems from "~/data/navbar.json"
+import navItems from "~/data/navbar.json";
 
 export default {
   name: "Navbar",
@@ -31,7 +32,16 @@ export default {
       const checkHttp = text.indexOf("http");
 
       return Boolean(checkHttp > -1);
-    }
+    },
+    scrollTo(target) {
+      const element = document.getElementById(target);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    },
   },
 }
 </script>
