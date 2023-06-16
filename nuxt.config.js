@@ -58,7 +58,7 @@ export default {
     component: 'Fa',
     suffix: false,
     icons: {
-      solid: ['faSpinner'],
+      solid: ['faSpinner', 'faHeart', 'faAngleUp'],
       brands: ['faFacebook', 'faLinkedin', 'faGithub', 'faTwitter'],
       regular: ['faCirclePlay', 'faArrowAltCircleRight']
     }
