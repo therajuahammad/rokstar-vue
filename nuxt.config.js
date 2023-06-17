@@ -21,7 +21,8 @@ export default {
     '~/main.css'
   ],
   plugins: [
-    { src: '~/plugins/vue-toast.js', mode: 'client' }
+    { src: '~/plugins/vue-toast.js' },
+    { src: '~/plugins/vue-silentbox.js'},
   ],
   components: true,
   buildModules: [
