@@ -3,10 +3,10 @@
     <ul class="nav flex space-x-10">
       <li v-for="navItem in navItems">
         <a
-          href="#"
           class="navitem"
-          @click.prevent="scrollTo(navItem.href)"
+          @click="scrollTo($event, navItem.href)"
           :data-hover="navItem.name.toLowerCase()"
+          :href="checkExternalLink(navItem.href) ? navItem.href : '#'"
           :target="checkExternalLink(navItem.href) ? '_blank' :'_self'"
         >
           <span class="block duration-300">{{ navItem.name }}</span>
@@ -33,13 +33,18 @@ export default {
 
       return Boolean(checkHttp > -1);
     },
-    scrollTo(target) {
-      const element = document.getElementById(target);
-      if (element) {
-        window.scrollTo({
-          top: element.offsetTop,
-          behavior: 'smooth'
-        });
+    scrollTo(event, target) {
+      if (this.checkExternalLink(target)) {
+
+      } else {
+        event.preventDefault();
+        const element = document.getElementById(target);
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop,
+            behavior: 'smooth'
+          });
+        }
       }
     },
   },
