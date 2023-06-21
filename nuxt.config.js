@@ -1,3 +1,4 @@
+require('dotenv').config();
 export default {
   ssr: false,
   target: 'static',
@@ -19,7 +20,10 @@ export default {
   css: [
     '~/main.css'
   ],
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/vue-toast.js' },
+    { src: '~/plugins/vue-silentbox.js'},
+  ],
   components: true,
   buildModules: [
     '@nuxt/postcss8',
@@ -34,6 +38,11 @@ export default {
         autoprefixer: {}
       }
     }
+  },
+  env: {
+    PUBLIC_SERVICE_ID: process.env.PUBLIC_SERVICE_ID,
+    PUBLIC_TEMPLATE_ID: process.env.PUBLIC_TEMPLATE_ID,
+    PUBLIC_PUBLIC_KEY: process.env.PUBLIC_PUBLIC_KEY,
   },
   googleFonts: {
     families: {
@@ -50,7 +59,7 @@ export default {
     component: 'Fa',
     suffix: false,
     icons: {
-      solid: ['faSpinner'],
+      solid: ['faSpinner', 'faHeart', 'faAngleUp'],
       brands: ['faFacebook', 'faLinkedin', 'faGithub', 'faTwitter'],
       regular: ['faCirclePlay', 'faArrowAltCircleRight']
     }

@@ -6,8 +6,9 @@
       <nav class="mb-10 space-x-5">
         <button
           data-filter="*"
+          class="filter-button"
           @click="onFilter('*')"
-          :class="`filter-button ${selCategory === '*' ? 'active': 'in-active'}`"
+          :class="{active: selCategory === '*'}"
         >
           All
         </button>
@@ -25,13 +26,22 @@
 
       <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-7">
         <div
-          v-for="portfolio in portfolios"
-          :class="`relative duration-400 rounded-md overflow-hidden hover:drop-shadow-portfolio ${portfolio.featuredVideo && 'overlay'}`"
+          :key="index"
+          v-for="(portfolio, index) in portfolios"
+          class="relative duration-400 rounded-md overflow-hidden hover:drop-shadow-portfolio"
         >
-          <a href="/" target="_blank">
-            <img :src="require(`/static/images/portfolio/${portfolio.thumb}`)" :alt="portfolio.title">
-          </a>
-          <button v-if="portfolio.featuredVideo" class="absolute inset-0 text-6xl text-white w-full z-10">
+          <div v-if="portfolio?.type === 'video'" class="absolute w-full h-full left-0 top-0 bg-black opacity-25"/>
+          <img
+            class="cursor-pointer"
+            :alt="portfolio.title"
+            :src="portfolio.thumbnail"
+            @click="handleLightGalleryBox(portfolio)"
+          />
+          <button
+            v-if="portfolio?.type === 'video'"
+            @click="handleLightGalleryBox(portfolio)"
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl text-white z-40"
+          >
             <Fa :icon="['fa-regular', 'circle-play']"/>
           </button>
         </div>
@@ -50,7 +60,9 @@ export default {
     return {
       selCategory: "*",
       portfolios: data,
-      categories: []
+      categories: [],
+      lightboxOpen: false,
+      lightboxIndex: 0
     }
   },
   mounted() {
@@ -68,6 +80,10 @@ export default {
       }).filter(item => item.category === category);
 
       category === "*" ? this.portfolios = data : this.portfolios = portfolioFiltered;
+    },
+
+    handleLightGalleryBox(item) {
+      this.$silentbox.open(item)
     }
   },
 }
@@ -80,9 +96,5 @@ export default {
 
 .filter-button.active {
   @apply after:absolute after:h-[6px] after:w-[6px] after:rounded-full after:bg-slate-700 after:left-1/2 after:-translate-x-1/2 after:-bottom-1;
-}
-
-.overlay {
-  @apply after:absolute after:bg-black after:inset-0 after:opacity-0 after:duration-400 hover:after:opacity-30;
 }
 </style>
